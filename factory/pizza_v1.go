@@ -39,7 +39,7 @@ type ClamPizza struct {
 	Pizza
 }
 
-/********** 工厂模式 ***********/
+/********** 简单工厂 ***********/
 // 简单工厂并不是一种设计模式，而是一种编程习惯
 type SimplePizzaFactory struct{}
 
@@ -86,12 +86,4 @@ func (store PizzaStore) OrderPizza(name string) Pizzable {
 	fmt.Println("> pizza done")
 
 	return pizza
-}
-
-func main() {
-	pizzaStore := NewPizzaStore(SimplePizzaFactory{})
-
-	pizzaStore.OrderPizza("cheese")
-	pizzaStore.OrderPizza("clam")
-	pizzaStore.OrderPizza("default")
 }
