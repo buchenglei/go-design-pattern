@@ -17,8 +17,11 @@ type (
 	}
 )
 
+// 工厂方法模式 定义了一个创建对象的接口，但是由子类决定要实例化的类是哪一个
+// 工厂方法让类把实例化的操作推迟到了子类中去
+
 type PizzaStoreV2 struct {
-	creater PizzaCreater
+	creater PizzaCreater // 这是一个工厂方法
 }
 
 func (store PizzaStoreV2) OrderPizza(pizzaType string) Pizzable {
