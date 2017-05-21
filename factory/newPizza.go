@@ -39,14 +39,10 @@ type NewCheesePizza struct {
 // 如果传进来的是芝加哥的原料工厂
 // 那么生产出来的就是芝加哥风味的CheesePizza
 func NewNewCheesePizza(name string, factory PizzaIngredientFactory) Pizzable {
-	pizza := &NewCheesePizza{
+	return &NewCheesePizza{
 		ingredientFactory: factory,
 		NewPizza:          NewPizza{Name: name},
 	}
-
-	pizza.Preparer = pizza
-
-	return pizza
 }
 
 func (pizza *NewCheesePizza) Prepare() {

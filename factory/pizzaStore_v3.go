@@ -1,9 +1,22 @@
 package main
 
-// 这是v2的一个小的升级
+type PizzaStoreV3 struct {
+	creater PizzaCreater // 这是一个工厂方法
+}
+
+func (store PizzaStoreV3) OrderPizza(pizzaType string) Pizzable {
+	pizza := store.creater.CreatePizza(pizzaType)
+
+	pizza.Prepare()
+	pizza.Bake()
+	pizza.Cut()
+	pizza.Box()
+
+	return pizza
+}
 
 type AnotherNYStylePizzaStore struct {
-	PizzaStoreV2
+	PizzaStoreV3
 
 	ingredientFactory PizzaIngredientFactory // 定义这家店用到的原料工厂
 }
@@ -15,7 +28,7 @@ func (nystore *AnotherNYStylePizzaStore) CreatePizza(name string) Pizzable {
 	switch name {
 	case "cheese":
 		// 纽约风格的店做出来的CheesePizza就需要用到纽约的原料工厂
-		pizza = NewNewCheesePizza("NYStyle Cheese Pizza", nystore.ingredientFactory)
+		pizza = NewNewCheesePizza("Another NYStyle Cheese Pizza", nystore.ingredientFactory)
 	}
 
 	return pizza
