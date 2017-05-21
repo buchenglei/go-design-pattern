@@ -2,34 +2,6 @@ package main
 
 import "fmt"
 
-/********** 定义Pizza要实现的方法 **********/
-type Pizzable interface {
-	Prepare()
-	Bake()
-	Box()
-	Cut()
-}
-
-// Pizza 将pizza定义为一个类，它本身可以包含一些有用的实现
-// 这些实现可以被覆盖
-type Pizza struct {
-	Name string
-}
-
-// 这里是pizza的一些默认方法
-func (pizza Pizza) Prepare() {
-	fmt.Printf("Prepare %s pizza\n", pizza.Name)
-}
-func (pizza Pizza) Bake() {
-	fmt.Printf("Bake %s pizza\n", pizza.Name)
-}
-func (pizza Pizza) Cut() {
-	fmt.Printf("Cut %s pizza\n", pizza.Name)
-}
-func (pizza Pizza) Box() {
-	fmt.Printf("Box %s pizza\n", pizza.Name)
-}
-
 /********** 一些其他的pizza **********/
 type CheesePizza struct {
 	Pizza

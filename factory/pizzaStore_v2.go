@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type (
 	PizzaOrder interface {
 		OrderPizza(string) Pizzable
@@ -53,7 +55,12 @@ func (nystore *NYStylePizzaStore) CreatePizza(name string) Pizzable {
 	switch name {
 	case "cheese":
 		pizza = &NYStyleCheesePizza{
-			Pizza: Pizza{Name: "NYStyle " + name},
+			Pizza: Pizza{
+				Name: "NYStyle " + name,
+				Toppings: []string{
+					"Grated Raggiano Cheese",
+				}, // 加一些纽约店的特设
+			},
 		}
 	case "clam":
 		pizza = &NYStyleClamPizza{
@@ -80,6 +87,10 @@ func NewNYStylePizzaStore() PizzaSaler {
 // ChicagoStyleCheesePizza 芝加哥风格的pizza
 type ChicagoStyleCheesePizza struct {
 	Pizza
+}
+
+func (pizza ChicagoStyleCheesePizza) Cut() {
+	fmt.Println("  >Chicago Style Cheese Pizza will be cutted into square slices")
 }
 
 // ChicagoStyleClamPizza 芝加哥风格的pizza
